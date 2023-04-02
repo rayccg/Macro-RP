@@ -1,0 +1,16 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Effects of fiscal policy on unemployment and output in Australia: a Bayesian Structural Vector Autoregression approach",
+    "section": "",
+    "text": "Abstract. This study attempts to estimate the effect of different fiscal policy instruments on unemployment and output in Australia, using a Bayesian Structural Vector Autoregression approach. Impulse response functions and forecast variance error decomposition methods are used to analyze these effects.\nKeywords. bsvars, fiscal policy, unemployment, GDP, impulse response, forecast variance error decomposition, Australia\nIntroduction\nIn many countries, fiscal policy is viewed as a direct means of achieving inclusive development objectives, frequently articulated as twin goals of sustained growth and low poverty (often achieved through low unemployment). However, fiscal policy shocks often occur in multifaceted ways, with simultaneous changes in both revenue and expenditure-side elements of the fiscal balance, making it difficult to disentangle the effects of any one particular policy.\nThis study attempts to identify the effect of the following fiscal policy instruments: tax policy, public investment expenditures, and social transfers, on both unemployment and output in the Australian context, using Bayesian Structural Vector Autoregression (BSVAR) approach.\nThe analysis is guided by the work of Abubakar, Attahir B. (2016), which used a SVAR approach to estimate the effect of public expenditures and public revenues on Nigerian output and unemployment. This study extends this work by using a more extensive dataset, involving more disaggregated revenue and expenditure variables, the inclusion of monetary policy control variables, as well as through the use of Bayesian estimation.\nData sources\nQuarterly data from Q1 1990 to Q4 2022 was sourced from the Australian Bureau of Statistics and the Reserve Bank of Australia and extracted using the readabs and readrba packages in R.\nOutcome variables:\nUnemployment rate and nominal GDP\nExplanatory variables of interest\nRevenue: Tax and non-tax (gross income less tax) revenue\nSpending: Public gross fixed capital formation and social assistance payments, government final consumption\nControl variables:\nMonetary policy: cash rate target and M3 money supply\n{r set up and libraries, include = F} rm(list=ls()) library(readrba) library(readabs) library(xts) library(tseries) library(urca) library(FinTS) library(rmarkdown)\n{r data download, include = F} #| message: false #rba <- browse_rba_series(search_string = ““) #abs <- as.matrix(show_available_catalogues()) #remotes::install_github(”mattcowgill/readrba”)"
+  },
+  {
+    "objectID": "index.html#monetary-policy-variables",
+    "href": "index.html#monetary-policy-variables",
+    "title": "Effects of fiscal policy on unemployment and output in Australia: a Bayesian Structural Vector Autoregression approach",
+    "section": "Monetary policy variables",
+    "text": "Monetary policy variables"
+  }
+]

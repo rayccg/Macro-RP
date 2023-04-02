@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.2.269">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Ray Gomez">
+
+<title>Macroeconometrics Research Report - Effects of fiscal policy on unemployment and output in Australia: a Bayesian Structural Vector Autoregression approach</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title">Macroeconometrics Research Report</span>
+    </a>
+  </div>
+          <div id="quarto-search" class="" title="Search"></div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#monetary-policy-variables" id="toc-monetary-policy-variables" class="nav-link active" data-scroll-target="#monetary-policy-variables">Monetary policy variables</a></li>
+  <li><a href="#cash-interest-rate" id="toc-cash-interest-rate" class="nav-link" data-scroll-target="#cash-interest-rate">Cash interest rate</a></li>
+  <li><a href="#unemployment-rate-a84423092x" id="toc-unemployment-rate-a84423092x" class="nav-link" data-scroll-target="#unemployment-rate-a84423092x">Unemployment rate: A84423092X</a></li>
+  <li><a href="#nominal-gdp-a2302467a" id="toc-nominal-gdp-a2302467a" class="nav-link" data-scroll-target="#nominal-gdp-a2302467a">Nominal GDP: A2302467A</a></li>
+  <li><a href="#public-gross-fixed-capital-formation-a2302555a" id="toc-public-gross-fixed-capital-formation-a2302555a" class="nav-link" data-scroll-target="#public-gross-fixed-capital-formation-a2302555a">Public gross fixed capital formation: A2302555A</a></li>
+  <li><a href="#social-assistance-benefits-payments-a2301976f" id="toc-social-assistance-benefits-payments-a2301976f" class="nav-link" data-scroll-target="#social-assistance-benefits-payments-a2301976f">Social assistance benefits payments: A2301976F</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Effects of fiscal policy on unemployment and output in Australia: a Bayesian Structural Vector Autoregression approach</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Ray Gomez </p>
+          </div>
+  </div>
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<p>Abstract. This study attempts to estimate the effect of different fiscal policy instruments on unemployment and output in Australia, using a Bayesian Structural Vector Autoregression approach. Impulse response functions and forecast variance error decomposition methods are used to analyze these effects.</p>
+<p>Keywords. bsvars, fiscal policy, unemployment, GDP, impulse response, forecast variance error decomposition, Australia</p>
+<p>Introduction</p>
+<p>In many countries, fiscal policy is viewed as a direct means of achieving inclusive development objectives, frequently articulated as twin goals of sustained growth and low poverty (often achieved through low unemployment). However, fiscal policy shocks often occur in multifaceted ways, with simultaneous changes in both revenue and expenditure-side elements of the fiscal balance, making it difficult to disentangle the effects of any one particular policy.</p>
+<p>This study attempts to identify the effect of the following fiscal policy instruments: tax policy, public investment expenditures, and social transfers, on both unemployment and output in the Australian context, using Bayesian Structural Vector Autoregression (BSVAR) approach.</p>
+<p>The analysis is guided by the work of Abubakar, Attahir B. (2016), which used a SVAR approach to estimate the effect of public expenditures and public revenues on Nigerian output and unemployment. This study extends this work by using a more extensive dataset, involving more disaggregated revenue and expenditure variables, the inclusion of monetary policy control variables, as well as through the use of Bayesian estimation.</p>
+<p>Data sources</p>
+<p>Quarterly data from Q1 1990 to Q4 2022 was sourced from the Australian Bureau of Statistics and the Reserve Bank of Australia and extracted using the readabs and readrba packages in R.</p>
+<p>Outcome variables:</p>
+<p>Unemployment rate and nominal GDP</p>
+<p>Explanatory variables of interest</p>
+<p>Revenue: Tax and non-tax (gross income less tax) revenue</p>
+<p>Spending: Public gross fixed capital formation and social assistance payments, government final consumption</p>
+<p>Control variables:</p>
+<p>Monetary policy: cash rate target and M3 money supply</p>
+<p>{r set up and libraries, include = F} rm(list=ls()) library(readrba) library(readabs) library(xts) library(tseries) library(urca) library(FinTS) library(rmarkdown)</p>
+<p>{r data download, include = F} #| message: false #rba &lt;- browse_rba_series(search_string = ““) #abs &lt;- as.matrix(show_available_catalogues()) #remotes::install_github(”mattcowgill/readrba”)</p>
+<section id="monetary-policy-variables" class="level2">
+<h2 class="anchored" data-anchor-id="monetary-policy-variables">Monetary policy variables</h2>
+</section>
+<section id="cash-interest-rate" class="level1">
+<h1>Cash interest rate</h1>
+<p>cash_rate.dl &lt;- read_rba(series_id = “FIRMMCRTD”) cashrate &lt;- to.quarterly(xts(cash_rate.dl<span class="math inline">\(value, cash_rate.dl\)</span>date), OHLC = FALSE) # M3 Money supply M3.dl &lt;- read_rba(series_id = “DMAM3N”) M3 &lt;- to.quarterly(xts(M3.dl<span class="math inline">\(value, M3.dl\)</span>date), OHLC = FALSE)</p>
+</section>
+<section id="unemployment-rate-a84423092x" class="level1">
+<h1>Unemployment rate: A84423092X</h1>
+<p>unemp_rate.dl &lt;- read_abs(series_id = “A84423092X”) unemp &lt;- to.quarterly(xts(unemp_rate.dl<span class="math inline">\(value, unemp_rate.dl\)</span>date), OHLC = FALSE)</p>
+</section>
+<section id="nominal-gdp-a2302467a" class="level1">
+<h1>Nominal GDP: A2302467A</h1>
+<p>nomGDP.dl &lt;- read_abs(series_id = “A2302467A”) nomGDP &lt;- to.quarterly(xts(nomGDP.dl<span class="math inline">\(value, nomGDP.dl\)</span>date), OHLC = FALSE) #summary(unemp_rate) ## Fiscal variables # Total tax: A2301963V totaltax.dl &lt;- read_abs(series_id = “A2301963V”) totaltax &lt;- to.quarterly(xts(totaltax.dl<span class="math inline">\(value, totaltax.dl\)</span>date), OHLC = FALSE) # Non-tax revenue: Gross income (A2302106V) - total tax govgrossinc.dl &lt;- read_abs(series_id = “A2302106V”) govgrossinc &lt;- to.quarterly(xts(govgrossinc.dl<span class="math inline">\(value, govgrossinc.dl\)</span>date), OHLC = FALSE) nontax &lt;- govgrossinc - totaltax</p>
+</section>
+<section id="public-gross-fixed-capital-formation-a2302555a" class="level1">
+<h1>Public gross fixed capital formation: A2302555A</h1>
+<p>pubinv.dl &lt;- read_abs(series_id = “A2302555A”) pubinv &lt;- to.quarterly(xts(pubinv.dl<span class="math inline">\(value, pubinv.dl\)</span>date), OHLC = FALSE)</p>
+</section>
+<section id="social-assistance-benefits-payments-a2301976f" class="level1">
+<h1>Social assistance benefits payments: A2301976F</h1>
+<p>pubtrans.dl &lt;- read_abs(series_id = “A2301976F”) pubtrans &lt;- to.quarterly(xts(pubtrans.dl<span class="math inline">\(value, pubtrans.dl\)</span>date), OHLC = FALSE) # Government final consumption: A2302527T pubcons.dl &lt;- read_abs(series_id = “A2301976F”) pubcons &lt;- to.quarterly(xts(pubcons.dl<span class="math inline">\(value, pubcons.dl\)</span>date), OHLC = FALSE)</p>
+<p>{r data merge and log transform, echo = F} # Merge data into one matrix Y.df &lt;- na.omit(merge(unemp, nomGDP , totaltax, nontax, pubinv, pubtrans, pubcons, cashrate, M3))</p>
+<p>varname_vec &lt;- c(“Unemployment rate”, “Nominal GDP”, “Tax revenue”, “Non-tax revenue”, “Gov’t GFCF”, “Social benefits payments”, “Gov’t consumption”, “Cash rate target”, “M3 supply”) colnames(Y.df) &lt;- varname_vec</p>
+<p>Y.df &lt;- Y.df[1:132,] # Transform into natural logs lnY.df &lt;- log(Y.df) date &lt;- as.vector(index(cashrate))[1:132] T &lt;- length(date)</p>
+<p>paged_table(as.data.frame(round(head(lnY.df,4),2))) paged_table(as.data.frame(round(tail(lnY.df,4),2)))</p>
+<p>As seen in the figures below, Australian GDP output has been on a relatively steady, upward trend since 1990, along with fiscal revenue and spending. These have been largely accommodated by lowering of interest rates and an expanding money supply. Overall, these have been associated with a downward, albeit volatile trajectory in the unemployment rate. Following the advice of Doppelt (2021), the data is left in original, seasonally-unadjusted form but will be transformed into natural log terms during the analysis.</p>
+<p>Time series plots: 1990 Q1 to 2022 Q4, original values</p>
+<p>{r, echo = F} colvec &lt;- c(“turquoise4”,“turquoise4”, “plum4”, “plum4”, “plum4”, “plum4”, “plum4”,“firebrick3”,“firebrick3”) par(mfrow=c(3,3), mar=c(2,2,2,2)) for (i in 1:9){ plot(date, y = Y.df[,i], type = “l”, main = paste(varname_vec[i]), ylab = ““, xlab =”“, col = colvec[i], lwd = 1.5, ylim = c(min(Y.df[,i]),max(Y.df[,i]))) }</p>
+<p>Preliminary data analysis</p>
+<p>ACF and PACF analysis</p>
+<p>ACF plots show strong, positive, and gradually decaying autocorrelation structures across all variables. Moreover the PACF plots indicate a near-one value at the first lag and much lower, mostly statistically zero values at higher lag orders. These characteristics may be indicating that the variables are following a random walk with drift process and as such may be unit-root non-stationary.</p>
+<p>Autocorrelation function (ACF) plots</p>
+<p>{r ACF plots, echo = FALSE} par(mfrow=c(3,3), mar=c(2,2,2,2)) for (i in 1:9){ Acf(lnY.df[,i], main = ““, ylim = c(-0.2,1)) title(main = paste(varname_vec[i]), line = 0.5) } for (i in 1:9){ pacf(lnY.df[,i], main =”“, ylim = c(-0.2,1)) title(main = paste(varname_vec[i]), line = 0.5) }</p>
+<p>Partial autocorrelation function (PACF) plots</p>
+<p>{r PACF plotsPACF analysis, echo = FALSE} par(mfrow=c(3,3), mar=c(2,2,2,2)) for (i in 1:9){ Acf(lnY.df[,i], main = ““, ylim = c(-0.2,1)) title(main = paste(varname_vec[i]), line = 0.5) } for (i in 1:9){ pacf(lnY.df[,i], main =”“, ylim = c(-0.2,1)) title(main = paste(varname_vec[i]), line = 0.5) }</p>
+<p>Augmented Dickey-Fuller test for unit roots</p>
+<p>{r Ng-Perron ADF test function, message = FALSE} #function to implement the Ng and Perron (1998) ADF test procedure ngperronADF &lt;- function(y){ T &lt;- length(y) kmax &lt;- ceiling(12*(((T-25)/100)^(1/4))) k &lt;- kmax + 1 # run test regression until t-value of lasgt lag &gt; 1.6 t &lt;- 0 while(abs(t) &lt; 1.6){ k &lt;- k - 1 adft &lt;- ur.df(y, type = “drift”, lags = k) t &lt;- as.numeric(adft@testreg$coefficients[k+2,][3]) } adft_k &lt;-ur.df(y, type = “drift”, lags = k) teststat &lt;- adft_k@teststat[2] cval &lt;- adft_k@cval[2,2] sig &lt;- abs(teststat)&gt;abs(cval) return(list(“stat” = teststat,“crit” = cval,“reject” = sig)) }</p>
+<p>ADF test results: levels, first, and second difference</p>
+<p>{r ADF test and order of integration determination, echo = FALSE}</p>
+<p>adf_results_lev &lt;- c() adf_results_fd &lt;- c() adf_results_fd2 &lt;- c()</p>
+<p>for (i in 1:9){ npadf_lev &lt;- ngperronADF(lnY.df[,i])<br>
+npadf_fd &lt;- ngperronADF(diff(lnY.df[,i])[-1]) npadf_fd2 &lt;- ngperronADF(diff(diff(lnY.df[,i])[-1])[-1])</p>
+<p>adf_results_lev &lt;- round(rbind(adf_results_lev,c(npadf_lev[[1]], npadf_lev[[3]])),2)</p>
+<p>adf_results_fd &lt;- round(rbind(adf_results_fd,c(npadf_fd[[1]], npadf_fd[[3]])),2) adf_results_fd2 &lt;- round(rbind(adf_results_fd2,c(npadf_fd2[[1]], npadf_fd2[[3]])),2) }</p>
+<p>colnames(adf_results_lev) &lt;- c(“ADF statistic, levels”, “Reject?”) colnames(adf_results_fd) &lt;- c(“ADF statistic, 1st difference”, “Reject?”) colnames(adf_results_fd2) &lt;- c(“ADF statistic, 2nd difference”, “Reject?”)</p>
+<p>rownames(adf_results_lev) &lt;- varname_vec rownames(adf_results_fd) &lt;- varname_vec rownames(adf_results_fd2) &lt;- varname_vec</p>
+<p>adf_results &lt;- cbind(adf_results_lev,adf_results_fd, adf_results_fd2)</p>
+<p>paged_table(as.data.frame(adf_results))</p>
+<p>for (i in 1:9){ npadf_lev &lt;- ngperronADF(lnY.df[,i])<br>
+#npadf_fd &lt;- ngperronADF(diff(lnY.df[,i])[-1]p)<br>
+}</p>
+<p>Model specification</p>
+<p>Structural form (SF) model</p>
+<p>The following SVAR model is specified to represent the system through which the included variables are jointly determined:</p>
+<p><span class="math display">\[
+\begin{align}
+B_0y_t &amp;= b_0 + B_1 y_{t-1} + \dots + b_p y_{t-p} + u_t\\
+u_{t}| Y_{t-1} &amp;\sim _{iid} ( 0, I_N)
+\end{align}
+\]</span> Where <span class="math inline">\(y_t\)</span> is a vector of endogenous variables:</p>
+<p><span class="math display">\[y_t=\begin{pmatrix} unemp_t &amp;= \text{unemployment rate}
+\\ nomgdp_t &amp;= \text{nominal GDP}
+\\ totaltax_t  &amp;= \text{tax revenue}
+\\ nontax_t  &amp;= \text{non-tax revenue}
+\\ pubinv_t  &amp;= \text{government gross fixed capital formation}
+\\ pubtrans_t  &amp;= \text{social assitance and benefits payments}
+\\ pubcons_t  &amp;= \text{government final consumption}
+\\ cashrate_t  &amp;= \text{cash rate target}
+\\ M3_t  &amp;= \text{M3 money supply}
+\end{pmatrix}\]</span></p>
+<p>and the structural matrix <span class="math inline">\(B_0\)</span> summarizes the contemporaneous relationships between these variables.</p>
+<p>Reduced form (RF) model</p>
+<p><span class="math display">\[
+\begin{align}
+y_t &amp;= \mu_0 + A_1 y_{t-1} + \dots + A_p y_{t-p} + \varepsilon_t\\
+\text{where }B_0^{-1}u_t &amp;= \varepsilon_t| Y_{t-1} \sim _{iid} ( 0, \Sigma)\\
+\Sigma &amp;= B_0^{-1}B_0^{-1'}
+\end{align}
+\]</span></p>
+<p>The study will utilize impulse response functions and forecast error variance decomposition methods to measure the effects of the four fiscal levers in the model on the unemployment rate and GDP output.</p>
+<p>References</p>
+<p>Abubakar, Attahir B. (2016): Dynamic effects of fiscal policy on output and unemployment in Nigeria: An econometric investigation, CBN Journal of Applied Statistics, ISSN 2476-8472, The Central Bank of Nigeria, Abuja, Vol. 07, Iss. 2, pp.&nbsp;101-122</p>
+<p>Doppelt, Ross (2021): Should Macroeconomists Use Seasonally Adjuted Time Series? Structural Identification and Bayesian Estimation in Seasonal Vector Autoregressions, Manuscript, Michigan State University</p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>
