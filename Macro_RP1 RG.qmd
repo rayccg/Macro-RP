@@ -8,9 +8,9 @@ execute:
 bibliography: references.bib
 ---
 
-> **Abstract.** This is a suggested formatting for your abstract. This **quarto** document is a template for your report. It includes some basic ways of working with such documents. You are invited to learn more about developing online reports with this technology. 
+> **Abstract.** This study attempts to estimate the effect of different fiscal policy instruments on unemployment and output in Australia, using a Bayesian Structural Vector Autoregression approach. Impulse response functions and forecast variance error decomposition methods are used to analyze these effects.
 >
-> **Keywords.** bsvars, impulse responses, quarto, R, tax shocks
+> **Keywords.** bsvars, fiscal policy, unemployment, GDP, impulse response, forecast variance error decomposition, Australia
 
 ## Introduction
 
@@ -37,8 +37,6 @@ Explanatory variables of interest
 Control variables:
 
 -   Monetary policy: cash rate target and M3 money supply
-
-
 
 ```{r set up and libraries, include = F}
 rm(list=ls())
@@ -126,7 +124,7 @@ paged_table(as.data.frame(round(tail(lnY.df,4),2)))
 
 As seen in the figures below, Australian GDP output has been on a relatively steady, upward trend since 1990, along with fiscal revenue and spending. These have been largely accommodated by lowering of interest rates and an expanding money supply. Overall, these have been associated with a downward, albeit volatile trajectory in the unemployment rate. Following the advice of Doppelt (2021), the data is left in original, seasonally-unadjusted form but will be transformed into natural log terms during the analysis.
 
-#### Time series plots, 1990 Q1 to 2022 Q4
+                Time series plots: 1990 Q1 to 2022 Q4, original values 
 
 ```{r, echo = F}
 colvec <- c("turquoise4","turquoise4", "plum4", "plum4", "plum4", "plum4", "plum4","firebrick3","firebrick3")
@@ -146,7 +144,24 @@ for (i in 1:9){
 
 ACF plots show strong, positive, and gradually decaying autocorrelation structures across all variables. Moreover the PACF plots indicate a near-one value at the first lag and much lower, mostly statistically zero values at higher lag orders. These characteristics may be indicating that the variables are following a random walk with drift process and as such may be unit-root non-stationary.
 
-```{r ACF and PACF analysis, echo = FALSE}
+                        Autocorrelation function (ACF) plots 
+
+```{r ACF plots, echo = FALSE}
+par(mfrow=c(3,3), mar=c(2,2,2,2))
+for (i in 1:9){
+  Acf(lnY.df[,i], main = "", ylim = c(-0.2,1))
+  title(main = paste(varname_vec[i]), line = 0.5)
+} 
+for (i in 1:9){
+  pacf(lnY.df[,i], main = "", ylim = c(-0.2,1))
+  title(main = paste(varname_vec[i]), line = 0.5)
+} 
+
+```
+
+                     Partial autocorrelation function (PACF) plots 
+
+```{r PACF plotsPACF analysis, echo = FALSE}
 par(mfrow=c(3,3), mar=c(2,2,2,2))
 for (i in 1:9){
   Acf(lnY.df[,i], main = "", ylim = c(-0.2,1))
@@ -182,6 +197,8 @@ ngperronADF <- function(y){
 }
 
 ```
+
+               ADF test results: levels, first, and second difference
 
 ```{r ADF test and order of integration determination, echo = FALSE}
 
@@ -259,11 +276,10 @@ y_t &= \mu_0 + A_1 y_{t-1} + \dots + A_p y_{t-p} + \varepsilon_t\\
 \end{align}
 $$
 
-The study will examine impluse response functions and 
+The study will utilize impulse response functions and forecast error variance decomposition methods to measure the effects of the four fiscal levers in the model on the unemployment rate and GDP output.
 
 ## References
 
 Abubakar, Attahir B. (2016): Dynamic effects of fiscal policy on output and unemployment in Nigeria: An econometric investigation, CBN Journal of Applied Statistics, ISSN 2476-8472, The Central Bank of Nigeria, Abuja, Vol. 07, Iss. 2, pp. 101-122
 
 Doppelt, Ross (2021): Should Macroeconomists Use Seasonally Adjuted Time Series? Structural Identification and Bayesian Estimation in Seasonal Vector Autoregressions, Manuscript, Michigan State University
-

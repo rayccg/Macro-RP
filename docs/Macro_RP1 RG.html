@@ -102,10 +102,9 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#model-specification" id="toc-model-specification" class="nav-link" data-scroll-target="#model-specification">Model specification</a>
   <ul class="collapse">
   <li><a href="#structural-form-sf-model" id="toc-structural-form-sf-model" class="nav-link" data-scroll-target="#structural-form-sf-model">Structural form (SF) model</a></li>
+  <li><a href="#reduced-form-rf-model" id="toc-reduced-form-rf-model" class="nav-link" data-scroll-target="#reduced-form-rf-model">Reduced form (RF) model</a></li>
   </ul></li>
   <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
-  <li><a href="#some-hints" id="toc-some-hints" class="nav-link" data-scroll-target="#some-hints">Some Hints</a></li>
-  <li><a href="#references-1" id="toc-references-1" class="nav-link" data-scroll-target="#references-1">References</a></li>
   </ul>
 </nav>
     </div>
@@ -136,8 +135,8 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 <blockquote class="blockquote">
-<p><strong>Abstract.</strong> This is a suggested formatting for your abstract. This <strong>quarto</strong> document is a template for your report. It includes some basic ways of working with such documents. You are invited to learn more about developing online reports with this technology.</p>
-<p><strong>Keywords.</strong> bsvars, impulse responses, quarto, R, tax shocks</p>
+<p><strong>Abstract.</strong> This study attempts to estimate the effect of different fiscal policy instruments on unemployment and output in Australia, using a Bayesian Structural Vector Autoregression approach. Impulse response functions and forecast variance error decomposition methods are used to analyze these effects.</p>
+<p><strong>Keywords.</strong> bsvars, fiscal policy, unemployment, GDP, impulse response, forecast variance error decomposition, Australia</p>
 </blockquote>
 <section id="introduction" class="level2">
 <h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
@@ -180,26 +179,34 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </div>
 <p>As seen in the figures below, Australian GDP output has been on a relatively steady, upward trend since 1990, along with fiscal revenue and spending. These have been largely accommodated by lowering of interest rates and an expanding money supply. Overall, these have been associated with a downward, albeit volatile trajectory in the unemployment rate. Following the advice of Doppelt (2021), the data is left in original, seasonally-unadjusted form but will be transformed into natural log terms during the analysis.</p>
-<section id="time-series-plots-1990-q1-to-2022-q4" class="level4">
-<h4 class="anchored" data-anchor-id="time-series-plots-1990-q1-to-2022-q4">Time series plots, 1990 Q1 to 2022 Q4</h4>
+<pre><code>            Time series plots: 1990 Q1 to 2022 Q4, original values </code></pre>
 <div class="cell">
 <div class="cell-output-display">
 <p><img src="Macro_RP1-RG_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 </section>
-</section>
 <section id="preliminary-data-analysis" class="level2">
 <h2 class="anchored" data-anchor-id="preliminary-data-analysis">Preliminary data analysis</h2>
 <section id="acf-and-pacf-analysis" class="level3">
 <h3 class="anchored" data-anchor-id="acf-and-pacf-analysis">ACF and PACF analysis</h3>
 <p>ACF plots show strong, positive, and gradually decaying autocorrelation structures across all variables. Moreover the PACF plots indicate a near-one value at the first lag and much lower, mostly statistically zero values at higher lag orders. These characteristics may be indicating that the variables are following a random walk with drift process and as such may be unit-root non-stationary.</p>
+<pre><code>                    Autocorrelation function (ACF) plots </code></pre>
 <div class="cell">
 <div class="cell-output-display">
-<p><img src="Macro_RP1-RG_files/figure-html/ACF and PACF analysis-1.png" class="img-fluid" width="672"></p>
+<p><img src="Macro_RP1-RG_files/figure-html/ACF plots-1.png" class="img-fluid" width="672"></p>
 </div>
 <div class="cell-output-display">
-<p><img src="Macro_RP1-RG_files/figure-html/ACF and PACF analysis-2.png" class="img-fluid" width="672"></p>
+<p><img src="Macro_RP1-RG_files/figure-html/ACF plots-2.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<pre><code>                 Partial autocorrelation function (PACF) plots </code></pre>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="Macro_RP1-RG_files/figure-html/PACF plotsPACF analysis-1.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="Macro_RP1-RG_files/figure-html/PACF plotsPACF analysis-2.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 </section>
@@ -208,6 +215,7 @@ ul.task-list li input[type="checkbox"] {
 <div class="cell">
 
 </div>
+<pre><code>           ADF test results: levels, first, and second difference</code></pre>
 <div class="cell">
 <div class="cell-output-display">
 
@@ -242,7 +250,9 @@ u_{t}| Y_{t-1} &amp;\sim _{iid} ( 0, I_N)
 \\ M3_t  &amp;= \text{M3 money supply}
 \end{pmatrix}\]</span></p>
 <p>and the structural matrix <span class="math inline">\(B_0\)</span> summarizes the contemporaneous relationships between these variables.</p>
-<p>Below is the reduced form equation for the above model:</p>
+</section>
+<section id="reduced-form-rf-model" class="level3">
+<h3 class="anchored" data-anchor-id="reduced-form-rf-model">Reduced form (RF) model</h3>
 <p><span class="math display">\[
 \begin{align}
 y_t &amp;= \mu_0 + A_1 y_{t-1} + \dots + A_p y_{t-p} + \varepsilon_t\\
@@ -250,23 +260,13 @@ y_t &amp;= \mu_0 + A_1 y_{t-1} + \dots + A_p y_{t-p} + \varepsilon_t\\
 \Sigma &amp;= B_0^{-1}B_0^{-1'}
 \end{align}
 \]</span></p>
+<p>The study will utilize impulse response functions and forecast error variance decomposition methods to measure the effects of the four fiscal levers in the model on the unemployment rate and GDP output.</p>
 </section>
 </section>
 <section id="references" class="level2">
 <h2 class="anchored" data-anchor-id="references">References</h2>
 <p>Abubakar, Attahir B. (2016): Dynamic effects of fiscal policy on output and unemployment in Nigeria: An econometric investigation, CBN Journal of Applied Statistics, ISSN 2476-8472, The Central Bank of Nigeria, Abuja, Vol. 07, Iss. 2, pp.&nbsp;101-122</p>
 <p>Doppelt, Ross (2021): Should Macroeconomists Use Seasonally Adjuted Time Series? Structural Identification and Bayesian Estimation in Seasonal Vector Autoregressions, Manuscript, Michigan State University</p>
-</section>
-<section id="some-hints" class="level2">
-<h2 class="anchored" data-anchor-id="some-hints">Some Hints</h2>
-<p>Have a look at how to work with <strong>RStudio</strong> and <strong>GitHub</strong> at: <a href="https://rfortherestofus.com/2021/02/how-to-use-git-github-with-r/">How to use git and GitHub with R</a>.</p>
-<p>These are many different ways of how to work with references in <strong>RStudio</strong>: <a href="https://posit.co/blog/rstudio-1-4-preview-citations/">Preview Citations</a>.</p>
-<p>To make all the <strong>R</strong> code visible on the website change the settings in the preabmble of this document to:</p>
-<pre><code>execute:
-  echo: true</code></pre>
-</section>
-<section id="references-1" class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="references-1">References</h2>
 
 
 </section>
